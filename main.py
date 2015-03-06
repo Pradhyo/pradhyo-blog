@@ -28,6 +28,8 @@ class MainHandler(webapp2.RequestHandler):
 
 class TestHandler(webapp2.RequestHandler):
 	def get(self):
+		#self.response.headers['Content-Type'] = 'text/plain'
+		#self.response.write(self.request)
 		q = self.request.get("q")
 		self.response.out.write(q)
 
