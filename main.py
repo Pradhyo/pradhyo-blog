@@ -16,7 +16,22 @@
 #
 import webapp2
 
-form = """ <b> Enter some text to ROT13: </b>
+welcome = """ <b> Welcome to Pradhyo's blog </b>
+<br>
+This is a testbed for me to learn web development. 
+<br>
+Choose from what I have built so far:
+
+<form>
+	<select name='project'>
+		<option value = "1">Rot13</option>
+		<option value = "Soon">Coming Soon</option>
+	</select>
+	<input type = "submit">
+
+</form> """
+
+rot13form = """ <b> Enter some text to ROT13: </b>
 <br>
 <br>
 
@@ -30,7 +45,17 @@ form = """ <b> Enter some text to ROT13: </b>
 class MainHandler(webapp2.RequestHandler):
     def get(self):
     	self.response.headers['Content-Type'] = 'text/html'
-        self.response.write(form)
+        self.response.write(welcome)
+
+	def post(self):
+		if self.request.get('project'):
+			self.response.write("You wrote Rot13")
 
 
-app = webapp2.WSGIApplication([('/', MainHandler)], debug=True)
+class Rot13Handler(webapp2.RequestHandler):
+	def get(self):
+		self.response.headers['Content-Type'] = 'text/html'
+		self.response.write(rot13form)
+
+app = webapp2.WSGIApplication([('/', MainHandler),
+								('/rot13', Rot13Handler)], debug=True)
