@@ -50,6 +50,8 @@ class MainHandler(webapp2.RequestHandler):
 	def post(self):
 		if self.request.get("project") == "rot13":
 			self.redirect("/rot13")
+		else:
+			self.response.write("I am still working on some cool stuff :)")
 
 
 class Rot13Handler(webapp2.RequestHandler):
@@ -58,7 +60,7 @@ class Rot13Handler(webapp2.RequestHandler):
 		self.response.write(rot13form)
 
 	def post(self):
-		self.response.write("Still workign on this")
+		self.response.write("Still working on this")
 
 app = webapp2.WSGIApplication([('/', MainHandler),
 								('/rot13', Rot13Handler)], debug=True)
