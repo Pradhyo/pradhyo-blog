@@ -22,9 +22,9 @@ This is a testbed for me to learn web development.
 <br>
 Choose from what I have built so far:
 
-<form>
-	<select name='project'>
-		<option value = "1">Rot13</option>
+<form method = "post">
+	<select name="project">
+		<option value = "rot13">Rot13</option>
 		<option value = "Soon">Coming Soon</option>
 	</select>
 	<input type = "submit">
@@ -43,19 +43,22 @@ rot13form = """ <b> Enter some text to ROT13: </b>
 </form> """
 
 class MainHandler(webapp2.RequestHandler):
-    def get(self):
-    	self.response.headers['Content-Type'] = 'text/html'
-        self.response.write(welcome)
+	def get(self):
+		self.response.headers['Content-Type'] = 'text/html'
+		self.response.write(welcome)
 
 	def post(self):
-		if self.request.get('project'):
-			self.response.write("You wrote Rot13")
+		if self.request.get("project") == "rot13":
+			self.redirect("/rot13")
 
 
 class Rot13Handler(webapp2.RequestHandler):
 	def get(self):
 		self.response.headers['Content-Type'] = 'text/html'
 		self.response.write(rot13form)
+
+	def post(self):
+		self.response.write("Still workign on this")
 
 app = webapp2.WSGIApplication([('/', MainHandler),
 								('/rot13', Rot13Handler)], debug=True)
