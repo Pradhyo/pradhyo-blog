@@ -16,6 +16,7 @@
 #
 import webapp2
 import codecs
+import cgi
 
 welcome = """ <b> Welcome to Pradhyo's blog </b>
 <br>
@@ -65,6 +66,8 @@ class Rot13Handler(webapp2.RequestHandler):
 	def post(self):
 		string = self.request.get("string")
 		string = codecs.encode(string,'rot13')
+		string = cgi.escape(string)
+		self.response.headers['Content-Type'] = 'text/html'
 		self.response.write(rot13form %string)
 
 app = webapp2.WSGIApplication([('/', MainHandler),
