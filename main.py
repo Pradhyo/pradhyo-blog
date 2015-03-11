@@ -15,6 +15,7 @@
 # limitations under the License.
 #
 import webapp2
+import codecs
 
 welcome = """ <b> Welcome to Pradhyo's blog </b>
 <br>
@@ -36,8 +37,8 @@ rot13form = """ <b> Enter some text to ROT13: </b>
 <br>
 <br>
 
-<form>
-<textarea name = "string"> Enter text here.. </textarea>
+<form method=post>
+<textarea name = "string">%s</textarea>
 <br>
 
 <input type = "submit">
@@ -56,12 +57,15 @@ class MainHandler(webapp2.RequestHandler):
 
 
 class Rot13Handler(webapp2.RequestHandler):
+	
 	def get(self):
 		self.response.headers['Content-Type'] = 'text/html'
-		self.response.write(rot13form)
+		self.response.write(rot13form %"Enter text..")
 
 	def post(self):
-		self.response.write("Still working on this")
+		string = self.request.get("string")
+		string = codecs.encode(string,'rot13')
+		self.response.write(rot13form %string)
 
 app = webapp2.WSGIApplication([('/', MainHandler),
 								('/rot13', Rot13Handler)], debug=True)
