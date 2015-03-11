@@ -39,7 +39,7 @@ rot13form = """ <b> Enter some text to ROT13: </b>
 <br>
 
 <form method=post>
-<textarea name = "string">%s</textarea>
+<textarea name = "text">%s</textarea>
 <br>
 
 <input type = "submit">
@@ -64,7 +64,7 @@ class Rot13Handler(webapp2.RequestHandler):
 		self.response.write(rot13form %"Enter text..")
 
 	def post(self):
-		string = self.request.get("string")
+		string = self.request.get("text")
 		string = codecs.encode(string,'rot13')
 		string = cgi.escape(string)
 		self.response.headers['Content-Type'] = 'text/html'
