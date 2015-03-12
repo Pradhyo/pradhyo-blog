@@ -16,7 +16,6 @@
 #
 import webapp2
 import codecs
-import cgi
 import os
 import jinja2
 
@@ -55,7 +54,6 @@ class Rot13Handler(Handler):
 	def post(self):
 		string = self.request.get("text")
 		string = codecs.encode(string,'rot13')
-		string = cgi.escape(string)
 		self.response.headers['Content-Type'] = 'text/html'
 		self.render("rot13.html", text = string)
 
