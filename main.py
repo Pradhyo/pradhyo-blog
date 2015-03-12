@@ -23,22 +23,6 @@ import jinja2
 template_dir = os.path.join(os.path.dirname(__file__),'templates')
 jinja_env = jinja2.Environment (loader = jinja2.FileSystemLoader(template_dir), autoescape = True)
 
-welcome = """ <b> Welcome to Pradhyo's blog </b>
-<br>
-This is a testbed for me to learn web development. 
-<br>
-Choose from what I have built so far:
-
-<form method = "post">
-	<select name="project">
-		<option value = "rot13">Rot13</option>
-		<option value = "Soon">Coming Soon</option>
-	</select>
-	<input type = "submit">
-
-</form> 
-"""
-
 rot13form = """ <b> Enter some text to ROT13: </b>
 <br>
 <br>
@@ -61,10 +45,10 @@ class Handler(webapp2.RequestHandler):
 	def render(self, template, **kw):
 		self.write(self.render_str(template, **kw))
 
-class MainHandler(webapp2.RequestHandler):
+class MainHandler(Handler):
 	def get(self):
 		self.response.headers['Content-Type'] = 'text/html'
-		self.response.write(welcome)
+		self.render("Welcome.html")
 
 	def post(self):
 		if self.request.get("project") == "rot13":
@@ -73,7 +57,7 @@ class MainHandler(webapp2.RequestHandler):
 			self.response.write("I am still working on some cool stuff :)")
 
 
-class Rot13Handler(webapp2.RequestHandler):
+class Rot13Handler(Handler):
 	
 	def get(self):
 		self.response.headers['Content-Type'] = 'text/html'
