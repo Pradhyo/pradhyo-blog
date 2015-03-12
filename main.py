@@ -23,17 +23,6 @@ import jinja2
 template_dir = os.path.join(os.path.dirname(__file__),'templates')
 jinja_env = jinja2.Environment (loader = jinja2.FileSystemLoader(template_dir), autoescape = True)
 
-rot13form = """ <b> Enter some text to ROT13: </b>
-<br>
-<br>
-
-<form method=post>
-<textarea name = "text">%s</textarea>
-<br>
-
-<input type = "submit">
-</form> """
-
 class Handler(webapp2.RequestHandler):
 	def write(self, *a, **kw):
 		self.response.out.write(*a, **kw)
@@ -61,14 +50,14 @@ class Rot13Handler(Handler):
 	
 	def get(self):
 		self.response.headers['Content-Type'] = 'text/html'
-		self.response.write(rot13form %"Enter text..")
+		self.render("rot13.html", text = "Enter text..")
 
 	def post(self):
 		string = self.request.get("text")
 		string = codecs.encode(string,'rot13')
 		string = cgi.escape(string)
 		self.response.headers['Content-Type'] = 'text/html'
-		self.response.write(rot13form %string)
+		self.render("rot13.html", text = string)
 
 app = webapp2.WSGIApplication([('/', MainHandler),
 								('/rot13', Rot13Handler)], debug=True)
