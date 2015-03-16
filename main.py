@@ -15,9 +15,8 @@
 # limitations under the License.
 #
 import webapp2
-import codecs
-import os
-import jinja2
+from mainhandler import MainHandler
+from rot13handler import Rot13Handler
 
 app = webapp2.WSGIApplication([('/', MainHandler),
 								('/rot13', Rot13Handler)], debug=True)
