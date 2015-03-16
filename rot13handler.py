@@ -1,4 +1,5 @@
 from handler import Handler
+import codecs
 
 class Rot13Handler(Handler):
 	
