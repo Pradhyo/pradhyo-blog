@@ -3,7 +3,7 @@ from handler import Handler
 class MainHandler(Handler):
 	def get(self):
 		self.response.headers['Content-Type'] = 'text/html'
-		self.render("Welcome.html")
+		self.render("HomePage.html")
 
 	def post(self):
 		if self.request.get("project") == "rot13":
