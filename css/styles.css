@@ -283,10 +283,6 @@ a:focus {
 
 @media(min-width:767px) {
     .content-section {
-        padding-top: 100px;
-    }
-
-    .extra-top-padding {
         padding-top: 250px;
     }
 
