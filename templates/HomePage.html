@@ -1,32 +1,106 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="pure-g">
-    <div class="pure-u-1 pure-u-lg-1-2">
-    <h2>
-    Hi, I am Pradhyo Bijja.
-    </h2>
 
-	<h3>
-	I have a Masters degree in Computer Networks.<br>
-	But right now, I build awesome web applications that solve problems.
-	</h3>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
 
-	<h3>Coding</h3>
-	<h4>I learned Python to program Software Defined Network controllers. I loved coding so much, I decided to become a software engineer late last December. So I spent January getting used to data structures and algorithms.</h4>
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    Pradhyo <span class="light">Bijja</span>
+                </a>
+            </div>
 
-	<h3>Influencers</h3>
-	<h4>I had a wonderful experience being interviewed by Google in Feb- I solved two interesting problems and both the interviewers across the table encouraged me to continue what I was doing. I met awesome people at Hackathons in March who told me to start building stuff and I am just getting started (haven't stopped since)</h4>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#">Blog</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Social</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
 
-	<h3>Spring Break</h3>
-	<h4>I used python to write the backend for a website to find travel buddies- learned SQL and how to use the webapp2 framework to deploy on the Google App Engine and showed it to my friends. Instead of arguing with them that I had built a Minimum Viable Product, I took the opportunity to learn some CSS, failed to make it usable on mobile phones and later patched it up to make it responsive across all devices- one week well spent.</h4>
+    <!-- Intro Header -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading">Pradhyo</h1>
+                        <p class="intro-text">I have a Masters degree in Computer Networks.<br> 
+                        But right now, I build awesome web applications that solve problems.</p>
+                        <a href="#about" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
 
-	<h3>Beyond</h3>
-	<h4>I did not get into Google and there's a lot more to learn but I will soon get into an awesome company doing what I love- coding.</h4>
-    </div>
-    <div class="pure-u-1 pure-u-lg-1-2">
-    <img src=stylesheets/Pradhyo.png>
-    </div>
-</div>
+    <!-- About Section -->
+    <section id="about" class="container content-section">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+                <h2>About me</h2>
+                <p>I learned Python to program Software Defined Network controllers. I loved coding so much, I decided to become a software engineer late last December. So I spent January getting used to data structures and algorithms.</p>
+                <p>I had a wonderful experience being interviewed by Google in Feb- I solved two interesting problems and both the interviewers across the table encouraged me to continue what I was doing. I met awesome people at Hackathons in March who told me to start building stuff and I (am just getting started) haven't stopped since.</p>
+                <p>I used python to write the backend for a website to find travel buddies- learned SQL and how to use the webapp2 framework to deploy on the Google App Engine and showed it to my friends. Instead of arguing with them that I had built a Minimum Viable Product, I took the opportunity to learn some CSS, failed to make it usable on mobile phones and later patched it up to make it responsive across all devices- one week well spent.</p>
+                <p> I did not get into Google and there's a lot more to learn but I will soon get into an awesome company doing what I love- coding. </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container extra-top-padding text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>Get in touch</h2>
+                <p>Shoot an email to <a href="mailto:feedback@startbootstrap.com">pradhyo@nyu.edu</a></p>
+                <p> Or find me here: </p>
+                <ul class="list-inline banner-social-buttons">
+                    <li>
+                        <a href="https://www.facebook.com/Pradhyo" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/Pradhyo" class="btn btn-default btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Github</span></a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/pradhyo" class="btn btn-default btn-lg"><i class="fa fa-linkedin fa-fw"></i> <span class="network-name">Linkedin</span></a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/pradhyo" class="btn btn-default btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">Twitter</span></a>
+                    </li>            
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+        </div>
+    </footer>
+
+</body>
 
 
 {% endblock %}
