@@ -5,6 +5,9 @@ class BlogHandler(Handler):
 	def get(self):
 		"""Render BlogHome.html and pass all posts to it- recent first"""
 		posts = Post.all().order('-created')
+		category = self.request.get('category')
+		if category:
+			posts.ancestor(blog_key(category = category))
 		self.render("BlogHome.html", posts = posts)
 
 def blog_key(category = 'non-tech'):
