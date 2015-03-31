@@ -1,4 +1,5 @@
 from handler import Handler
+from google.appengine.ext import db
 
 class BlogHandler(Handler):
 	def get(self):
