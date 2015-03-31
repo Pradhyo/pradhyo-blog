@@ -19,6 +19,12 @@ class Post(db.Model):
 	created = db.DateTimeProperty(auto_now_add = True)
 	edited = db.DateTimeProperty(auto_now = True)
 
+	def render_post(self):
+		"""Return this post properly with title and blog showing properly """
+		#Since we are passing as html, convert new lines to <br> to render new lines properly
+		self._render_text = self.content.replace('\n', '<br>')
+		return render_str("post.html", p = self)
+
 class NewPost(Handler):
 	def get(self):
 		"""Show page where a new post can be submitted """
