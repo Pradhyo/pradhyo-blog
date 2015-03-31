@@ -7,9 +7,9 @@ class BlogHandler(Handler):
 		posts = Post.all().order('-created')
 		self.render("BlogHome.html", posts = posts)
 
-def blog_key(topic = 'non-tech'):
-	"""Assign blog key with parent as topic """
-	return db.Key.from_path('blogs', topic)
+def blog_key(category = 'non-tech'):
+	"""Assign blog key with parent as category """
+	return db.Key.from_path('blogs', category)
 
 class Post(db.Model):
 	"""Defines each blog post """
@@ -33,12 +33,12 @@ class NewPost(Handler):
 		"""Get title and blog and store new Post entry with those values"""
 		title = self.request.get('title')
 		blog = self.request.get('blog')
-		topic = self.request.get('topic')
+		category = self.request.get('category')
 
 		if title and blog:
-			if not topic:
-				topic = 'non-tech'
-			temp_post = Post(parent = blog_key(topic = topic), title = title, blog = blog)
+			if not category:
+				category = 'non-tech'
+			temp_post = Post(parent = blog_key(category = category), title = title, blog = blog)
 			temp_post.put()
 			self.redirect('/blog')
 		else: 
