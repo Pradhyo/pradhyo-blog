@@ -2,8 +2,10 @@ from handler import Handler
 
 class BlogHandler(Handler):
 	def get(self):
-		self.response.headers['Content-Type'] = 'text/html'
-		self.render("BlogHome.html")
+		"""Render BlogHome.html and pass all posts to it- recent first"""
+		posts = Post.all().order('-created')
+		self.render("BlogHome.html", posts = posts)
+
 
 def blog_key(topic = 'non-tech'):
 	"""Assign blog key with parent as topic """
@@ -15,6 +17,30 @@ class Post(db.Model):
 	blog = db.TextProperty(required = True)
 	created = db.DateTimeProperty(auto_now_add = True)
 	edited = db.DateTimeProperty(auto_now = True)
+
+class NewPost(Handler):
+	def get(self):
+		"""Show page where a new post can be submitted """
+		self.render("NewPost.html")
+
+	def post(self):
+		"""Get title and blog and store new Post entry with those values"""
+		title = self.request.get('title')
+		blog = self.request.get('blog')
+		topic = self.request.get('topic')
+
+		if title and blog:
+			temp_post = Post(parent = blog_key(topic = topic), title = title, post = post)
+			temp_post.put()
+			self.redirect('/blog')
+		else: 
+			error = "Enter both :/"
+			self.render("NewPost.html", title = title, blog = blog, error = error)
+
+
+
+
+
 
 
 

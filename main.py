@@ -5,4 +5,5 @@ from bloghandler import BlogHandler
 
 app = webapp2.WSGIApplication([('/', MainHandler),
 							   ('/blog', BlogHandler),
+							   ('/newpost', NewPost),
 							   ('/rot13', Rot13Handler)], debug=True)
