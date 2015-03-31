@@ -1,4 +1,4 @@
-from handler import Handler
+from handler import Handler, render_str
 from google.appengine.ext import db
 
 class BlogHandler(Handler):
@@ -6,7 +6,6 @@ class BlogHandler(Handler):
 		"""Render BlogHome.html and pass all posts to it- recent first"""
 		posts = Post.all().order('-created')
 		self.render("BlogHome.html", posts = posts)
-
 
 def blog_key(topic = 'non-tech'):
 	"""Assign blog key with parent as topic """
@@ -22,7 +21,7 @@ class Post(db.Model):
 	def render_post(self):
 		"""Return this post properly with title and blog showing properly """
 		#Since we are passing as html, convert new lines to <br> to render new lines properly
-		self._render_text = self.content.replace('\n', '<br>')
+		self._render_text = self.blog.replace('\n', '<br>')
 		return render_str("post.html", p = self)
 
 class NewPost(Handler):
@@ -37,17 +36,11 @@ class NewPost(Handler):
 		topic = self.request.get('topic')
 
 		if title and blog:
-			temp_post = Post(parent = blog_key(topic = topic), title = title, post = post)
+			if not topic:
+				topic = 'non-tech'
+			temp_post = Post(parent = blog_key(topic = topic), title = title, blog = blog)
 			temp_post.put()
 			self.redirect('/blog')
 		else: 
 			error = "Enter both :/"
 			self.render("NewPost.html", title = title, blog = blog, error = error)
-
-
-
-
-
-
-
-
