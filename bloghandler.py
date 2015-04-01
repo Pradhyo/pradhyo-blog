@@ -8,7 +8,7 @@ class BlogHandler(Handler):
 		category = self.request.get('category')
 		if category:
 			posts.ancestor(blog_key(category = category))
-		self.render("BlogHome.html", posts = posts)
+		self.render("BlogHome.html", posts = posts, search = True)
 
 def blog_key(category = 'non-tech'):
 	"""Assign blog key with parent as category """
