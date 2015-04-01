@@ -386,6 +386,10 @@ body {
     -o-background-size: cover;
 }
 
+.blog_category {
+    background-color: khaki;
+}
+
 .divider {
   margin-top: 0px;
   margin-bottom: 10px;
