@@ -9,7 +9,7 @@ body {
     height: 100%;
     font-family: Lora,"Helvetica Neue",Helvetica,Arial,sans-serif;
     color: #fff;
-    background-color: orangered;
+    background-color: #ff6a32;
 }
 
 html {
@@ -375,15 +375,24 @@ body {
 }
 
 .new_blog {
-    display: table;
-    width: 100%;
     height: auto;
-    padding: 100px 0;
-    text-align: center;
-    color: orangered;
-    background-color: #fff;
+    padding-top: 100px;
+    color: darkolivegreen;
+    background-color: khaki;
+    font-size: 18px;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+}
+
+.divider {
+  margin-top: 0px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 3px solid olive;
+}
+
+.blog-title {
+    text-transform: uppercase;
 }
