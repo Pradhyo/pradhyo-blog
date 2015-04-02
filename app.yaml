@@ -9,13 +9,13 @@ handlers:
   static_files: favicon.ico
   upload: favicon\.ico
 
-- url: */css
+- url: .*/css
   static_dir: css
 
-- url: */js
+- url: .*/js
   static_dir: js
 
-- url: */img
+- url: .*/img
   static_dir: img
 
 - url: .*
