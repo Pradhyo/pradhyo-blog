@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <section class = "container new_blog content-section">
+  <section class = "container new_blog content-section full-height">
   {% for p in posts %}
     {{ p.render_post() | safe }}
     <br><br>
