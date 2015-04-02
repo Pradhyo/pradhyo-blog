@@ -400,3 +400,7 @@ body {
 .blog-title {
     text-transform: uppercase;
 }
+
+.full-height {
+  min-height: 100%;
+} 
