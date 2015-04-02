@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class = "container new_blog content-section full-height">
+  {{post.render_post() | safe}}
+  </section>
+{% endblock %}
