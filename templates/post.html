@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-lg-9 col-lg-offset-1 blog-title">
-    <b>{{p.title}}</b>
+    <a href = "/blog/{{p.parent_key().name()}}/{{p.key().id()}}"><b>{{p.title}}</b></a>
   </div>
   <div class="col-lg-2">
     {{p.created.strftime("%b %d, %Y")}}
@@ -13,3 +13,5 @@
     {{p._render_text | safe}}
   </div>
 </div>
+
+
