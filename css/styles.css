@@ -404,3 +404,7 @@ body {
 .full-height {
   min-height: 100%;
 } 
+
+.dropdown-menu>li>a {
+    color: orangered;
+}
