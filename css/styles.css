@@ -308,6 +308,7 @@ a:focus {
 
 .btn-default {
     border: 1px solid black;
+    margin: 1px;
     color: black;
     background-color: transparent;
 }
