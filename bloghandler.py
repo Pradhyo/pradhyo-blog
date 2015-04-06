@@ -36,16 +36,17 @@ class NewPost(Handler):
 		"""Get title and blog and store new Post entry with those values"""
 		title = self.request.get('title')
 		blog = self.request.get('blog')
+		secret = self.request.get('secret')
 		category = self.request.get('category')
 
-		if title and blog:
+		if title and blog and secret == "andyblignaut":
 			if not category:
 				category = 'non-tech'
 			temp_post = Post(parent = blog_key(category = category), title = title, blog = blog)
 			temp_post.put()
 			self.redirect('/blog')
 		else: 
-			error = "Enter both :/"
+			error = "Don't you remember the secret?"
 			self.render("NewPost.html", title = title, blog = blog, error = error)
 
 class PostPage(Handler):
