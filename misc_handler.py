@@ -12,3 +12,8 @@ class Rot13Handler(Handler):
 		string = codecs.encode(string,'rot13')
 		self.response.headers['Content-Type'] = 'text/html'
 		self.render("rot13.html", text = string)
+
+class ImgResize(Handler):
+	"""Handler for resizing images"""
+	
+		
