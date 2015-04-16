@@ -1,6 +1,6 @@
 from handler import Handler
 import codecs
-import Image
+from google.appengine.api import images
 
 def resize_image(img, max_width, max_height, crop = False):
 	"""Returns resized image not exceeding max_size while maintaining
@@ -10,7 +10,7 @@ def resize_image(img, max_width, max_height, crop = False):
 		factor = max(max_width/float(width), max_height/float(height))
 	else:
 		factor = min(max_width/float(width), max_height/float(height))
-	return img.resize((int(width*factor),int(height*factor)), Image.ANTIALIAS)
+	return img.resize((int(width*factor),int(height*factor)), images.ANTIALIAS)
 
 class Rot13Handler(Handler):
 	
@@ -26,5 +26,12 @@ class Rot13Handler(Handler):
 
 class ImgResize(Handler):
 	"""Handler for resizing images"""
-	
+	def get(self):
+		self.render("img_resize.html")
+
+	def post(self):
+		img = self.request.get('img')
+		max_width = self.request.get('max_width')
+		max_height = self.request.get('max_height')
+		self.render("img_resize.html", img = img, height = max_height, width = max_width)
 		
