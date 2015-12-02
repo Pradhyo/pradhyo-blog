@@ -1,6 +1,6 @@
 [
 {% for t in transactions %}
-{"userid":{{ t.userid }}, "amount":{{ t.amount }}}
+{"id":{{t.key().id()}}, "userid":{{ t.userid }}, "amount":{{ t.amount }}}
 {% if not loop.last %}
     ,
 {% endif %}
