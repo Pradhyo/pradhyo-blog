@@ -19,7 +19,7 @@ class TransactionHandler(Handler):
 		userid = int(self.request.get('userid'))
 		temp_transaction = Transaction(amount=amount, userid=userid)
 		temp_transaction.put()
-		self.redirect('/api/transaction')
+		self.render("Transactions.html", transactions = [temp_transaction])
 
 
 app = webapp2.WSGIApplication([('/', MainHandler),
