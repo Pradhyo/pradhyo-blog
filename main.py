@@ -15,12 +15,14 @@ class TransactionHandler(Handler):
 		self.render("Transactions.html", transactions = transactions)
 
 	def post(self):
-		amount = int(self.request.get('amount'))
-		userid = int(self.request.get('userid'))
-		temp_transaction = Transaction(amount=amount, userid=userid)
-		temp_transaction.put()
-		self.render("Transactions.html", transactions = [temp_transaction])
-
+		try:
+			amount = int(self.request.get('amount'))
+			userid = int(self.request.get('userid'))
+			temp_transaction = Transaction(amount=amount, userid=userid)
+			temp_transaction.put()
+			self.render("Transactions.html", transactions = [temp_transaction])
+		except:
+			self.response.write('{"status": "error", "data": null, "message": "Invalid parameters"}')
 
 app = webapp2.WSGIApplication([('/', MainHandler),
 							   ('/blog', BlogHandler),
