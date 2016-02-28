@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <section class = "container new_blog content-section full-height">
+  	<h3 class="text-center"> Label detection </h3>
+  	<div id="centerdiv" >
+		<form method="post">
+			<div class="form-group">
+				<input type="text" name="url" placeholder="Image url" class="form-control">
+			</div>
+<!--
+			<div class="form-group">
+				<input type="file" name="img" >
+			</div>
+			 -->
+			<input type="submit">
+		</form>
+	</div>
+	<div>
+		{{output}}
+	</div>
+  </section>
+
+{% endblock %}
