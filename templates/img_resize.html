@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <section class = "container new_blog content-section full-height text-center">
-  	<h3> Image resizer</h3>
-  	<div id="centerdiv">
+  <section class = "container new_blog content-section full-height">
+  	<h3 class="text-center"> Image resizer</h3>
+  	<div id="centerdiv" >
 		<form method="post">
 			<div class="form-group">
 				<input type="text" name="max_width" placeholder="Maximum width (pixels)" class="form-control"> 
@@ -14,7 +14,12 @@
 			<div class="form-group">
 				<input type="file" name="img" >
 			</div>
+			<input type="submit">
 		</form>
 	</div>
+	<div>
+		<img src="{{img}}" height="{{height}}" width="{{width}}">
+	</div>
   </section>
+
 {% endblock %}
