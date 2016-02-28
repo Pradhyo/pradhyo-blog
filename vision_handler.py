@@ -16,7 +16,7 @@ class Vision(Handler):
 
 	def post(self):
 		http = httplib2.Http()
-
+		number_results = 5
 		credentials = GoogleCredentials.get_application_default().create_scoped(['https://www.googleapis.com/auth/cloud-platform'])
 		credentials.authorize(http)
 		API_DISCOVERY_FILE = 'https://vision.googleapis.com/$discovery/rest?version=v1'
@@ -32,12 +32,12 @@ class Vision(Handler):
 			   },
 			  'features': [{
 				'type': 'LABEL_DETECTION',
-				'maxResults': 5,
+				'maxResults': number_results,
 			   }]
 			 }]
 		  })
 		response = service_request.execute()
-		label = response['responses'][0]['labelAnnotations'][0]['description']
-		# print('Found label: %s for %s' % (label, photo_file))
-		# return 0
-		self.render("vision.html", output = label)
+		label = ''
+		for index in xrange(number_results):
+			label += response['responses'][0]['labelAnnotations'][index]['description'] + ', '
+		self.render("vision.html", output = label[:-2], img_url = url)
