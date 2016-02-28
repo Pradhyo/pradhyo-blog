@@ -409,8 +409,3 @@ body {
 .dropdown-menu>li>a {
     color: orangered;
 }
-
-#centerdiv {
-    display: table;
-    margin: 0 auto;
-}
