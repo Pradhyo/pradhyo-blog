@@ -15,12 +15,11 @@ class Vision(Handler):
 		self.render("vision.html")
 
 	def post(self):
-		API_DISCOVERY_FILE = 'https://vision.googleapis.com/$discovery/rest?version=v1'
 		http = httplib2.Http()
 
 		credentials = GoogleCredentials.get_application_default().create_scoped(['https://www.googleapis.com/auth/cloud-platform'])
 		credentials.authorize(http)
-
+		API_DISCOVERY_FILE = 'https://vision.googleapis.com/$discovery/rest?version=v1'
 		service = build('vision', 'v1', http, discoveryServiceUrl=API_DISCOVERY_FILE)
 		url = self.request.get("url")
 		response = requests.get(url).content
